@@ -3,5 +3,7 @@ module.exports = (app) => {
       "/api",
       require("./employees.routers"),
       require("./test.router"),
+      require("./livestock.routers"),
+      require("./vaccination_projects.routers"),
   )
 }
