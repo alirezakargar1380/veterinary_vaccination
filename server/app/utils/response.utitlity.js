@@ -8,8 +8,13 @@ success = function ( res,data) {
 
 //Function for run Promise
 error = function (res,message) {
-    res.send({status:2,message:message,
-        data:[]});
+    res
+        .status(400)
+        .send({
+          status: 400,
+          message: message,
+          data: []
+        });
 }
 
 
