@@ -1,0 +1,3 @@
+SELECT w.name AS emp FROM users w, users m WHERE w.managerId = m.id AND m.salary < w.salary AND w.managerId IS NOT NULL ORDER by w.salary DESC;
+
+SELECT * FROM `livestock` INNER JOIN veterinary_address ON livestock.veterinary_address=veterinary_address.id;
