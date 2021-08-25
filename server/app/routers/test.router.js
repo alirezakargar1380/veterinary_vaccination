@@ -1,10 +1,9 @@
 const express = require("express")
 const Route = express.Router();
+const controller = require("./../controller/test.controller");
 
 Route
     .route("/test")
-    .get((req, res) => {
-      res.send("work")
-    })
+    .get(controller.test)
 
 module.exports = Route
