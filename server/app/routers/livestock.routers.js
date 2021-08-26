@@ -10,8 +10,4 @@ Route
     .route("/livestock/get")
     .get(controller.get_livestock)
 
-Route
-    .route("/livestock/get_types")
-    .get(controller.get_livestock_types)
-
 module.exports = Route
