@@ -1,15 +1,31 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-  // console.log(sequelize)
-  const employee = sequelize.define('employee', {
+  const users = sequelize.define('users', {
+    role: {
+      type: DataTypes.TEXT,
+    },
+    personnel_code: {
+      type: DataTypes.TEXT,
+    },
+    workplace_id: {
+      type: DataTypes.INTEGER,
+    },
+    phone: {
+      type: DataTypes.TEXT,
+    },
     name: {
       type: DataTypes.TEXT,
-      allowNull: false
+    },
+    lastname: {
+      type: DataTypes.TEXT,
+    },
+    password: {
+      type: DataTypes.TEXT,
     },
   }, {
-    tableName: "employee",
+    tableName: "users",
     paranoid: true
   });
 
-  return employee;
+  return users;
 };
