@@ -14,3 +14,37 @@ exports.get = async () =>
     throw Exception.setError(error, false);
   }
 }
+
+exports.add = async (json) =>
+{
+  try {
+    await livestock_type.create(json)
+    return {
+      status: true
+    }
+
+  } catch (error) {
+    log.error(error);
+    throw Exception.setError(error, false);
+  }
+}
+
+exports.delete = async (id) =>
+{
+  try {
+    await livestock_type.destroy(
+        {
+          where: {
+            id: id
+          }
+        }
+    )
+    return {
+      status: true
+    }
+
+  } catch (error) {
+    log.error(error);
+    throw Exception.setError(error, false);
+  }
+}
