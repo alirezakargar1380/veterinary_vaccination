@@ -1,4 +1,4 @@
-const s = require("../service/employees.service")
+const s = require("../service/users.service")
 
 exports.test = (req, res) =>
 {
