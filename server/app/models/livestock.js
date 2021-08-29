@@ -18,6 +18,24 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false
     },
+    type_work: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    veterinary_address: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    state: {
+      type: DataTypes.TEXT,
+    },
+    city: {
+      type: DataTypes.TEXT,
+    },
+    booklet_number: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
   }, {
     tableName: "livestock",
     paranoid: true
