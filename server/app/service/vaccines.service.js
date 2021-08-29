@@ -1,5 +1,5 @@
 const {
-  livestock_information
+  vaccines
 } = require("./../models")
 const log = require('../utils/log.utility')
 const Exception = require("../utils/error.utility")
@@ -7,7 +7,7 @@ const Exception = require("../utils/error.utility")
 exports.get = async () =>
 {
   try {
-    return await livestock_information.findAll()
+    return await livestock_type.findAll()
 
   } catch (error) {
     log.error(error);
@@ -18,7 +18,7 @@ exports.get = async () =>
 exports.create = async (json) =>
 {
   try {
-    await livestock_information.create(json)
+    await vaccines.create(json)
     return {
       status: true
     }
@@ -32,7 +32,7 @@ exports.create = async (json) =>
 exports.delete = async (id) =>
 {
   try {
-    await livestock_information.destroy(
+    await livestock_type.destroy(
         {
           where: {
             id: id

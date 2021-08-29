@@ -23,3 +23,14 @@ exports.delete_information = async (req, res) =>
     response.exception(res, e)
   }
 }
+
+exports.get_information = async (req, res) =>
+{
+  try {
+    var result = await livestock_information_service.get()
+    response.success(res, result)
+
+  } catch (e) {
+    response.exception(res, e)
+  }
+}

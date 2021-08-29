@@ -10,4 +10,8 @@ Route
     .route('/livestock_information/delete')
     .delete(controller.delete_information)
 
+Route
+    .route('/livestock_information/get')
+    .get(controller.get_information)
+
 module.exports = Route

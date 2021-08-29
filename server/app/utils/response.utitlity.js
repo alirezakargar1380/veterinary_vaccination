@@ -1,8 +1,11 @@
 
 //Function for run Promise
 success = function ( res,data) {
-        res.send({status:1,message:"",
-        data:data});
+        res.status(200).send({
+          status: true,
+          message:"",
+          data:data
+        });
 
 }
 
