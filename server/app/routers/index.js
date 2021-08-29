@@ -7,5 +7,6 @@ module.exports = (app) => {
       require("./livestock_types.routers"),
       require("./livestock_information.routers"),
       require("./vaccines.routers"),
+      require("./address.router"),
   )
 }

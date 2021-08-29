@@ -5,8 +5,13 @@ const response = require("../utils/response.utitlity");
 
 exports.add_livestock = async (req, res) =>
 {
-  var result = await livestockService.add(req.body)
-  res.send(result)
+  try {
+    var result = await livestockService.add(req.body)
+    res.send(result)
+
+  } catch (e) {
+    response.exception(res, e.message)
+  }
 }
 
 exports.get_livestock = async (req, res) =>
