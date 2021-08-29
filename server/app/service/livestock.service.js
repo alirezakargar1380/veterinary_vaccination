@@ -9,8 +9,10 @@ exports.add = async (json) =>
 {
   try {
 
-    livestock.create(json)
-    return true;
+    await livestock.create(json)
+    return {
+      status: true
+    };
 
   } catch (error) {
     log.error(error);
@@ -22,7 +24,8 @@ exports.get = async () =>
 {
   try {
 
-    return db.sequelize.query("SELECT * FROM `livestock` INNER JOIN veterinary_address ON livestock.veterinary_address=veterinary_address.id")
+    // return db.sequelize.query("SELECT * FROM `livestock` INNER JOIN veterinary_address ON livestock.veterinary_address=veterinary_address.id")
+    return livestock.findAll()
 
   } catch (error) {
     log.error(error);
