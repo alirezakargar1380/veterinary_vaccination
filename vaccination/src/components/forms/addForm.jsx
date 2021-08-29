@@ -1,5 +1,6 @@
 import React from "react";
 import * as api from '../../API/public';
+import List from "../List/List";
 
 export default class AddForm extends React.Component {
   constructor(props) {
@@ -14,7 +15,6 @@ export default class AddForm extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.inputs)
   }
 
   async log() {
@@ -31,10 +31,16 @@ export default class AddForm extends React.Component {
 
     switch (this.props.type) {
       case 'employee':
-        // await api.add_user(this.state.values)
-        //     .then((res) => {
-        //       console.log(res)
-        //     })
+        await api.add_user(this.state.values)
+            .then((res) => {
+              console.log(res)
+            })
+        break;
+      case 'livestock':
+        await api.add_livestock(this.state.values)
+            .then((res) => {
+              console.log(res)
+            })
         break;
       default:
         console.log('def')
@@ -53,16 +59,18 @@ export default class AddForm extends React.Component {
               {
                 return(
                     <select
-                        key={79}
+                        key={item.id}
                         onChange={(e) => {
                           this.setState({
                             [item.name]: e.target.value
                           })
                         }}
                         className="px-3">
-                      <option key={999} defaultValue>{item.placeholder}</option>
+                      <option
+                          key={item.id}
+                          defaultValue>{item.placeholder}</option>
                       {item.options.map((op) => (
-                          <option key={op.id} value={op.value} >{op.value}</option>
+                          <option key={op.id} value={op.eValue} >{op.value}</option>
                       ))}
                     </select>
                 )
@@ -93,6 +101,11 @@ export default class AddForm extends React.Component {
                 this.log()
               }}
           >ثبت</button>
+          <div className="mt-5">
+            <List
+                type={this.props.type}
+            />
+          </div>
         </div>
     )
   }
