@@ -2,7 +2,7 @@ const response = require("../utils/response.utitlity");
 
 exports.API_authenticaiton = async (req, res, next) =>
 {
-  console.log(req.headers)
+  // console.log(req.headers)
   // check for basic auth header
   if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
     return res.status(401).json({ message: 'Missing Authorization Header' });
