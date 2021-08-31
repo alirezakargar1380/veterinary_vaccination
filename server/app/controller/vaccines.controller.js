@@ -11,3 +11,14 @@ exports.add_vaccines = async (req, res) =>
     response.exception(res, e)
   }
 }
+
+exports.get_vaccines = async (req, res) =>
+{
+  try {
+    const result = await vaccinesService.get()
+    response.success(res, result)
+
+  } catch (e) {
+    response.exception(res, e)
+  }
+}

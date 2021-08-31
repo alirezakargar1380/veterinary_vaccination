@@ -7,7 +7,7 @@ const Exception = require("../utils/error.utility")
 exports.get = async () =>
 {
   try {
-    return await livestock_type.findAll()
+    return await vaccines.findAll()
 
   } catch (error) {
     log.error(error);
