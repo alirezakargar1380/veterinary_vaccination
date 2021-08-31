@@ -1,4 +1,5 @@
 const {
+  livestock,
   livestock_information
 } = require("./../models")
 const log = require('../utils/log.utility')
@@ -7,11 +8,21 @@ const Exception = require("../utils/error.utility")
 exports.get = async () =>
 {
   try {
-    return await livestock_information.findAll()
+    const d = await livestock_information.findAll({
+      include: [{
+        model: livestock,
+        required: true
+        // where: { id: 'livestock_id' }
+      }]
+    })
+
+    return d
+
+    // return await livestock_information.findAll()
 
   } catch (error) {
     log.error(error);
-    throw Exception.setError(error, false);
+    throw Exception.setError(error.message, false);
   }
 }
 
