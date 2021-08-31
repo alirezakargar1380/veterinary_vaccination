@@ -42,6 +42,24 @@ export default class AddForm extends React.Component {
               console.log(res)
             })
         break;
+      case 'information_livestock':
+        await api.add_livestock(this.state.values)
+            .then((res) => {
+              console.log(res)
+            })
+        break;
+      case 'vaccines':
+        await api.add_vaccines(this.state.values)
+            .then((res) => {
+              console.log(res)
+            })
+        break;
+      case 'lifestock_address':
+        await api.add_address(this.state.values)
+            .then((res) => {
+              console.log(res)
+            })
+        break;
       default:
         console.log('def')
     }
