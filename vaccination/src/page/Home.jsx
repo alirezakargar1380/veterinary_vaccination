@@ -1,5 +1,5 @@
 import React from "react";
-import * as api from '../API/public';
+// import * as api from '../API/public';
 import Header from "../components/Header";
 // import AddForm from "../components/forms/addForm";
 
@@ -12,7 +12,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    api.hello()
+    // api.hello()
   }
 
   sendR() {
