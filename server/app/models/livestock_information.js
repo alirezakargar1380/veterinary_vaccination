@@ -16,8 +16,18 @@ module.exports = function (sequelize, DataTypes) {
     },
   }, {
     tableName: "livestock_information",
-    paranoid: true
+    paranoid: true,
+    timestamps: false
   });
+
+  livestock_information.associate = function(models) {
+    // console.log(models)
+    livestock_information.hasOne(models.livestock, {
+      foreignKey: 'id',
+      sourceKey: 'livestock_id'
+    });
+
+  }
 
   return livestock_information;
 };

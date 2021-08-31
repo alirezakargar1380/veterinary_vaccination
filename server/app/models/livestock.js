@@ -38,8 +38,18 @@ module.exports = function (sequelize, DataTypes) {
     },
   }, {
     tableName: "livestock",
-    paranoid: true
+    paranoid: true,
+    timestamps: false
   });
+
+  livestock.associate = function(models) {
+    // console.log(models)
+    livestock.hasOne(models.livestock_information, {
+      foreignKey: 'livestock_id',
+      sourceKey: 'id'
+    });
+
+  }
 
   return livestock;
 };
