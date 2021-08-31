@@ -24,7 +24,8 @@ module.exports = function (sequelize, DataTypes) {
     },
   }, {
     tableName: "users",
-    paranoid: true
+    paranoid: true,
+    timestamps: false
   });
 
   return users;

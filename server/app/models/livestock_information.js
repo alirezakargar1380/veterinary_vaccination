@@ -5,6 +5,12 @@ module.exports = function (sequelize, DataTypes) {
     livestock_id: {
       type: DataTypes.INTEGER,
     },
+    vaccinated_number: {
+      type: DataTypes.INTEGER,
+    },
+    emplyee_id: {
+      type: DataTypes.INTEGER,
+    },
     type_livestock: {
       type: DataTypes.TEXT,
     },
@@ -25,6 +31,11 @@ module.exports = function (sequelize, DataTypes) {
     livestock_information.hasOne(models.livestock, {
       foreignKey: 'id',
       sourceKey: 'livestock_id'
+    });
+
+    livestock_information.hasOne(models.users, {
+      foreignKey: 'id',
+      sourceKey: 'emplyee_id'
     });
 
   }
