@@ -9,7 +9,8 @@ export default class App extends React.Component {
 constructor(props) {
   super(props);
   this.state = {
-    address: []
+    address: [],
+    life_stock_types: [],
   }
 }
   employee_op() {
@@ -45,8 +46,28 @@ constructor(props) {
     })
   }
 
+  async lifestock_types() {
+    const types = await api.get_life_stock_types().then((res) => {
+      return res.data.data
+    })
+    var options = []
+    for (let i = 0; i < types.length; i++) {
+      options.push({
+        id: types[i].id,
+        eValue: types[i].type,
+        value: types[i].type,
+      })
+    }
+
+    this.setState({
+      life_stock_types: options
+    })
+  }
+
   async componentDidMount() {
-    await this.address_op()
+    // console.log(window.location.href)
+    await this.address_op();
+    await this.lifestock_types();
   }
 
   render() {
@@ -169,6 +190,72 @@ constructor(props) {
                             name: 'booklet_number',
                             type: 'text',
                             placeholder: 'شماره شناسنامه'
+                          },
+                        ]}
+                        {...props}
+                    />
+                )}
+            />
+            <Route
+                path="/information_livestock"
+                render={(props) => (
+                    <AddForm
+                        title={"اطلاعات دامداران"}
+                        type={"information_livestock"}
+                        inputs={[
+                          {
+                            id: 1,
+                            name: 'livestock_id',
+                            type: 'text',
+                            placeholder: 'نام دامدار'
+                          },
+                          {
+                            id: 2,
+                            type: 'select',
+                            options: this.state.life_stock_types,
+                            placeholder: 'نوع دام'
+                          }
+                        ]}
+                        {...props}
+                    />
+                )}
+            />
+            <Route
+                path="/vaccines"
+                render={(props) => (
+                    <AddForm
+                        title={"واکسن ها"}
+                        type={"vaccines"}
+                        inputs={[
+                          {
+                            id: 1,
+                            name: 'name',
+                            type: 'text',
+                            placeholder: 'نام واکسن'
+                          },
+                          {
+                            id: 2,
+                            name: 'serial',
+                            type: 'text',
+                            placeholder: 'سریال'
+                          }
+                        ]}
+                        {...props}
+                    />
+                )}
+            />
+            <Route
+                path="/lifestock_address"
+                render={(props) => (
+                    <AddForm
+                        title={"آدرس مراکز"}
+                        type={"lifestock_address"}
+                        inputs={[
+                          {
+                            id: 1,
+                            name: 'address',
+                            type: 'text',
+                            placeholder: 'آدرس'
                           },
                         ]}
                         {...props}
