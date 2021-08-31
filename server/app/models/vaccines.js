@@ -9,7 +9,8 @@ module.exports = function (sequelize, DataTypes) {
     },
   }, {
     tableName: "vaccines",
-    paranoid: true
+    paranoid: true,
+    timestamps: false
   });
 
   return vaccines;

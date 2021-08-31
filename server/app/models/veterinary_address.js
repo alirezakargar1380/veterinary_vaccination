@@ -6,7 +6,8 @@ module.exports = function (sequelize, DataTypes) {
     }
   }, {
     tableName: "veterinary_address",
-    paranoid: true
+    paranoid: true,
+    timestamps: false
   });
 
   return veterinary_address;
