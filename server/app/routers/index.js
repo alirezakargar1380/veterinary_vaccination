@@ -8,5 +8,6 @@ module.exports = (app) => {
       require("./livestock_information.routers"),
       require("./vaccines.routers"),
       require("./address.router"),
+      require("./vaccines_detail.router"),
   )
 }

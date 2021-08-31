@@ -7,7 +7,6 @@ const Exception = require("../utils/error.utility")
 exports.add = async (json) =>
 {
   try {
-
     await veterinary_address.create(json)
     return {
       status: true

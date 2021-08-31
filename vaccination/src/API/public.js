@@ -27,6 +27,10 @@ module.exports.get_user = async () => {
   return await axios.get(BASE_URL+'/get_users', headers)
 }
 
+module.exports.get_vaccines_detail = async () => {
+  return await axios.get(BASE_URL+'/vaccines/detail/get/all', headers)
+}
+
 module.exports.get_address = async () => {
   return await axios.get(BASE_URL+'/address/get', headers)
 }
