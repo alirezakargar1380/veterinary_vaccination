@@ -77,7 +77,7 @@ export default class List extends React.Component {
             res.data.data[i].father = res.data.data[i].livestock.father
             delete res.data.data[i].livestock
             delete res.data.data[i].livestock_id
-            console.log(res.data.data[i])
+            // console.log(res.data.data[i])
           }
 
           this.setState({

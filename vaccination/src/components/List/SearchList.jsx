@@ -1,6 +1,9 @@
 import React from 'react';
 import * as api from '../../API/public';
 
+
+// just render live stock and when user click on them show vaccination detail
+
 export default class SearchList extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +19,7 @@ export default class SearchList extends React.Component {
       case 'vaccines_detail':
         this.setState({
           title: [
+            'حذف',
             'شناسه',
             'واکسینه شده ها',
             'نوع دام',
@@ -25,6 +29,8 @@ export default class SearchList extends React.Component {
             'نام خانوادگی دامدار',
             'کد ملی دامدار',
             'نام پدر',
+            'استان',
+            'شهرستان',
             'نام کارمند',
             'نام خانوادگی',
             'کد پرسنلی'
@@ -38,6 +44,8 @@ export default class SearchList extends React.Component {
                 res.data.data[i].lastname = res.data.data[i].livestock.lastname
                 res.data.data[i].natinal_id = res.data.data[i].livestock.natinal_id
                 res.data.data[i].father = res.data.data[i].livestock.father
+                res.data.data[i].state = res.data.data[i].livestock.state
+                res.data.data[i].city = res.data.data[i].livestock.city
                 res.data.data[i].employee_name = res.data.data[i].user.name
                 res.data.data[i].employee_lastname = res.data.data[i].user.lastname
                 res.data.data[i].employee_personnel_code = res.data.data[i].user.personnel_code
@@ -82,8 +90,9 @@ export default class SearchList extends React.Component {
               return (
                   <tbody key={index} >
                   <tr key={index} >
+                    <th>click</th>
                     {keys.map((key, index) => (
-                        <th className="px-3" key={index} >{item[key]}</th>
+                        <th className="px-3" key={index}>{item[key]}</th>
                     ))}
                   </tr>
                   {/*<th>{item.id}</th>*/}
