@@ -9,17 +9,13 @@ export default class Vaccines_info_table extends React.Component {
         "نام خانوادگی",
         "کد پرسنلی",
         "نوع عملیات",
+        "نام واکسن",
+        "نوع دام",
         "تعداد دام",
         "واجد شرایط",
         "واکسن زده شده",
+        "باقی مانده",
         "تاریخ",
-        "نوع دام",
-      ],
-      columns: [
-        "تعداد دام",
-        "واجد شرایط",
-        "واکسن زده شده",
-        "نوع دام",
       ]
     }
   }
@@ -48,10 +44,12 @@ export default class Vaccines_info_table extends React.Component {
                 <th>{item.user.lastname}</th>
                 <th>{item.user.personnel_code}</th>
                 <th>{item.type}</th>
+                <th>{item.vaccine.name}</th>
                 <th>{item.type_livestock}</th>
                 <th>{item.number_livestock}</th>
                 <th>{item.number_eligible_livestock}</th>
                 <th>{item.vaccinated_number}</th>
+                <th>{item.number_eligible_livestock - item.vaccinated_number}</th>
                 <th>{item.date}</th>
               </tr>
           ))}

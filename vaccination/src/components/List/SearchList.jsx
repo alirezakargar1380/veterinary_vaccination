@@ -84,43 +84,16 @@ export default class SearchList extends React.Component {
     if (data.length === 0) return <h1>loading | emty</h1>
     return (
         <div>
-          <div className="w-fit mx-auto">
-            <table border="1" className="font-Thin" dir='rtl'>
-              <thead>
-              <tr>
-                {title.map((item, index) => (
-                    <th className="px-3" key={index}>{item}</th>
-                ))}
-              </tr>
-              </thead>
-              {data.map((item, index) => {
-                return (
-                    <tbody key={index}>
-                    <tr key={index}>
-                      <th>click</th>
-                      {keys.map((key, index) => (
-                          <th className="px-3" key={index}>{item[key]}</th>
-                      ))}
-                    </tr>
-                    {/*<th>{item.id}</th>*/}
-                    {/*<th>{item.role}</th>*/}
-                    {/*<th>{item.personnel_code}</th>*/}
-                    </tbody>
-                )
-              })}
-
-            </table>
-          </div>
           <div className="mb-5">
 
-            <div className="mb-5 article-box mx-auto row p-2">
-              <div className="col-md-6">
-                <section className="row mx-auto">
-                  <div className="col-md-6 text-left font-blod px-0">تعداد کل واکسن شده:</div>
-                  <div className="col-md-6 text-right font-medium">کلیک کنید</div>
-                </section>
-              </div>
-            </div>
+            {/*<div className="mb-5 article-box mx-auto row p-2">*/}
+            {/*  <div className="col-md-6">*/}
+            {/*    <section className="row mx-auto">*/}
+            {/*      <div className="col-md-6 text-left font-blod px-0">تعداد کل واکسن شده:</div>*/}
+            {/*      <div className="col-md-6 text-right font-medium">کلیک کنید</div>*/}
+            {/*    </section>*/}
+            {/*  </div>*/}
+            {/*</div>*/}
 
             {data.map((dateItem, dataIndex) => (
                 <article key={dataIndex + 9000} className="mt-5 radius-10 article-box mx-auto f-20 p-2 row">{
