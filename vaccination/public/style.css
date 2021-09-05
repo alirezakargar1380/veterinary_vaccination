@@ -47,11 +47,14 @@
     url('Fonts/Shabnam-Medium.ttf') format('truetype');
     font-weight: 500;
 }
-.article-box {
-    width: 900px;
+.article-box-bg {
     background-color: burlywood;
     box-shadow: 0px 0px 9px 0px #00000045;
 }
+.article-box {
+    width: 900px;
+}
+
 
 /*----------------------------------------------------- width ----------------------*/
 /*----------------------------------------------------- font ----------------------*/
@@ -62,7 +65,7 @@
     font-family: "Shabnam Light";
 }
 .font-medium{
-    font-family: "Shabnam Medium";
+    font-family: "Shabnam Medium"!important;
 }
 .font-blod{
     font-family: "Shabnam Bold";
