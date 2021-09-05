@@ -11,6 +11,9 @@ module.exports = function (sequelize, DataTypes) {
     emplyee_id: {
       type: DataTypes.INTEGER,
     },
+    vaccine_id: {
+      type: DataTypes.INTEGER,
+    },
     type_livestock: {
       type: DataTypes.TEXT,
     },
@@ -34,19 +37,24 @@ module.exports = function (sequelize, DataTypes) {
 
   livestock_information.associate = function(models) {
     // console.log(models)
-    livestock_information.hasOne(models.livestock, {
-      foreignKey: 'id',
-      sourceKey: 'livestock_id'
-    });
+    // livestock_information.hasOne(models.livestock, {
+    //   foreignKey: 'id',
+    //   sourceKey: 'livestock_id'
+    // });
 
-    models.users.belongsTo(livestock_information,{
-      foreignKey: 'id',
-      sourceKey: 'emplyee_id'
-    })
+    // models.users.belongsTo(livestock_information,{
+    //   foreignKey: 'id',
+    //   sourceKey: 'emplyee_id'
+    // })
 
     livestock_information.hasOne(models.users, {
       foreignKey: 'id',
       sourceKey: 'emplyee_id'
+    });
+
+    livestock_information.hasOne(models.vaccines, {
+      foreignKey: 'id',
+      sourceKey: 'vaccine_id'
     });
 
   }

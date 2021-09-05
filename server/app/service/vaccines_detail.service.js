@@ -1,5 +1,5 @@
 const {
-  livestock_information, livestock, users
+  livestock_information, livestock, users, vaccines
 } = require("./../models")
 const log = require('../utils/log.utility')
 const Exception = require("../utils/error.utility")
@@ -15,6 +15,12 @@ exports.get = async () =>
           include: [
             {
               model: users,
+              // where: {
+              //   id: 1
+              // }
+            },
+            {
+              model: vaccines,
               // where: {
               //   id: 1
               // }
