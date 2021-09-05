@@ -43,11 +43,20 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   livestock.associate = function(models) {
-    // console.log(models)
-    livestock.hasOne(models.livestock_information, {
+    livestock.hasMany(models.livestock_information,{
       foreignKey: 'livestock_id',
       sourceKey: 'id'
     });
+
+    models.users.belongsTo(models.livestock_information,{
+      foreignKey: 'id',
+      sourceKey: 'emplyee_id'
+    })
+
+    // livestock.hasOne(models.users, {
+    //   foreignKey: 'livestock_id',
+    //   sourceKey: 'id'
+    // });
 
   }
 

@@ -7,6 +7,26 @@ const Exception = require("../utils/error.utility")
 exports.get = async () =>
 {
   try {
+    return await livestock.findAll({
+      include: [
+        {
+          model: livestock_information,
+          required: true,
+          include: [
+            {
+              model: users,
+              // where: {
+              //   id: 1
+              // }
+            },
+          ]
+        },
+        // {
+        //   model: users,
+        //   required: true
+        // }
+      ]
+    })
     return await livestock_information.findAll({
       include: [
         {

@@ -14,6 +14,12 @@ module.exports = function (sequelize, DataTypes) {
     type_livestock: {
       type: DataTypes.TEXT,
     },
+    type: {
+      type: DataTypes.TEXT,
+    },
+    date: {
+      type: DataTypes.TEXT,
+    },
     number_livestock: {
       type: DataTypes.INTEGER,
     },
@@ -32,6 +38,11 @@ module.exports = function (sequelize, DataTypes) {
       foreignKey: 'id',
       sourceKey: 'livestock_id'
     });
+
+    models.users.belongsTo(livestock_information,{
+      foreignKey: 'id',
+      sourceKey: 'emplyee_id'
+    })
 
     livestock_information.hasOne(models.users, {
       foreignKey: 'id',
