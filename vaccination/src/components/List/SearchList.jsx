@@ -20,7 +20,7 @@ export default class SearchList extends React.Component {
       case 'vaccines_detail':
         this.setState({
           title: [
-            'حذف',
+            // 'حذف',
             'شناسه',
             'نام دامدار',
             'نام خانوادگی دامدار',
@@ -61,7 +61,7 @@ export default class SearchList extends React.Component {
 
     if (!this.state.data[0]) return
     var title = [
-      "del",
+      // "del",
       "id",
       "name",
       "lastname",
@@ -96,7 +96,7 @@ export default class SearchList extends React.Component {
             {/*</div>*/}
 
             {data.map((dateItem, dataIndex) => (
-                <article key={dataIndex + 9000} className="mt-5 radius-10 article-box mx-auto f-20 p-2 row">{
+                <article key={dataIndex + 9000} className="mt-5 radius-10 article-box-bg f-20 p-2 row">{
 
 
                   keys.map((keysItem, index) => {
@@ -107,19 +107,20 @@ export default class SearchList extends React.Component {
 
                       )
                     }
-                    if (title[index] === "حذف") {
-                      return (
-                          <div className="col-md-6" key={index}>
-                            <section className="row mx-auto form-group">
-                              <div className="col-md-6 text-left font-blod px-0">{title[index]}:</div>
-                              <div className="col-md-6 text-right font-medium" onClick={() => {
-                                alert(dateItem.id)
-                              }}>کلیک
-                              </div>
-                            </section>
-                          </div>
-                      )
-                    } else {
+                    // if (title[index] === "حذف") {
+                    //   return (
+                    //       <div className="col-md-6" key={index}>
+                    //         <section className="row mx-auto form-group">
+                    //           <div className="col-md-6 text-left font-blod px-0">{title[index]}:</div>
+                    //           <div className="col-md-6 text-right font-medium" onClick={() => {
+                    //             alert(dateItem.id)
+                    //           }}>کلیک
+                    //           </div>
+                    //         </section>
+                    //       </div>
+                    //   )
+                    // }
+                    else {
                       return (
                           <div className="col-md-6" key={index + 2000}>
                             <section className="row mx-auto form-group">

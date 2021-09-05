@@ -55,3 +55,7 @@ module.exports.get_address = async () => {
   return await axios.get(BASE_URL+'/address/get', headers)
 }
 
+module.exports.delete_user = async (id) => {
+  return await axios.delete(BASE_URL+`/delete_user?id=${id}`, headers)
+}
+

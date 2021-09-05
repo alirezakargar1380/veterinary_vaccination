@@ -88,6 +88,12 @@ constructor(props) {
                             placeholder: 'نام کارمند'
                           },
                           {
+                            id: 7,
+                            name: 'lastname',
+                            type: 'text',
+                            placeholder: 'نام خانوادگی'
+                          },
+                          {
                             id: 2,
                             name: 'role',
                             type: 'select',
@@ -112,18 +118,6 @@ constructor(props) {
                             type: 'select',
                             options: this.state.address,
                             placeholder: 'آدرس'
-                          },
-                          {
-                            id: 6,
-                            name: 'name',
-                            type: 'text',
-                            placeholder: 'نام'
-                          },
-                          {
-                            id: 7,
-                            name: 'lastname',
-                            type: 'text',
-                            placeholder: 'نام خانوادگی'
                           },
                           {
                             id: 8,
