@@ -25,3 +25,15 @@ exports.get_livestock = async (req, res) =>
   }
 }
 
+exports.delete_livestock = async (req, res) =>
+{
+  try {
+    const {id} = req.query
+    var result = await livestockService.delete(id)
+    response.success(res, result)
+
+  } catch (e) {
+    response.exception(res, e.message)
+  }
+}
+

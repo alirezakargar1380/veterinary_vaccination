@@ -20,6 +20,27 @@ exports.add = async (json) =>
   }
 }
 
+exports.delete = async (id) =>
+{
+  try {
+
+    await livestock.destroy(
+        {
+          where: {
+            id: id
+          }
+        }
+    )
+    return {
+      status: true
+    }
+
+  } catch (error) {
+    log.error(error);
+    throw Exception.setError(error, false);
+  }
+}
+
 exports.get = async () =>
 {
   try {

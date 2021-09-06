@@ -7,6 +7,10 @@ Route
     .post(controller.add_livestock)
 
 Route
+    .route("/livestock/delete")
+    .delete(controller.delete_livestock)
+
+Route
     .route("/livestock/get")
     .get(controller.get_livestock)
 
