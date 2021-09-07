@@ -8,17 +8,7 @@ const Exception = require("../utils/error.utility")
 exports.get = async () =>
 {
   try {
-    const d = await livestock_information.findAll({
-      include: [{
-        model: livestock,
-        required: true
-        // where: { id: 'livestock_id' }
-      }]
-    })
-
-    return d
-
-    // return await livestock_information.findAll()
+    return await livestock_information.findAll()
 
   } catch (error) {
     log.error(error);
