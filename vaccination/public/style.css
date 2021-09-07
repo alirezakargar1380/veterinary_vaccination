@@ -47,15 +47,23 @@
     url('Fonts/Shabnam-Medium.ttf') format('truetype');
     font-weight: 500;
 }
+body {
+    background: #5d5d5d;
+}
 .article-box-bg {
-    background-color: burlywood;
+    background-color: #c1c1c1;
     box-shadow: 0px 0px 9px 0px #00000045;
 }
 .article-box {
     width: 900px;
 }
-
-
+.overflow-x-hidden {
+    overflow-x: auto;
+}
+/*----------------------------------------------------- COLOR ----------------------*/
+.cw {
+    color: white;
+}
 /*----------------------------------------------------- width ----------------------*/
 /*----------------------------------------------------- font ----------------------*/
 .font-Thin{
@@ -78,11 +86,15 @@
 }
 .cursor { cursor: pointer }
 .section-btn-shodow {
-    box-shadow: 0px 0px 6px 0px #035cff66;
+    box-shadow: 0px 0px 12px 0px #4ec6ff;;
 }
 .add-form-input-shodow {
     box-shadow: 0px 0px 6px 0px #0c0c0c57;
 }
-
+.submit-btn:hover {
+    transition: 0.5s ease-in-out;
+    background-color: #1dde9d;
+}
 .bg-w { background: white }
+.bg-b { background: black }
 .w-fit { width: fit-content }

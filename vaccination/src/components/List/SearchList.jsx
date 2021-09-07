@@ -96,8 +96,7 @@ export default class SearchList extends React.Component {
             {/*</div>*/}
 
             {data.map((dateItem, dataIndex) => (
-                <article key={dataIndex + 9000} className="mt-5 radius-10 article-box-bg f-20 p-2 row">{
-
+                <article key={dataIndex + 9000} className="radius-10 article-box-bg f-20 p-2 row mb-5">{
 
                   keys.map((keysItem, index) => {
                     if (keys[index] === "info") {
