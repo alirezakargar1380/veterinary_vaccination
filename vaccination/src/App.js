@@ -168,22 +168,37 @@ constructor(props) {
                             placeholder: 'نام پدر'
                           },
                           {
-                            id: 6,
                             name: 'type_work',
-                            type: 'text',
+                            type: 'select',
+                            options: [{
+                              eValue: 'عشایر',
+                              value: 'عشایر',
+                            }, {
+                              eValue: 'شهری',
+                              value: 'شهری',
+                            }],
                             placeholder: 'نوع فعالیت دام'
                           },
                           {
-                            id: 7,
                             name: 'veterinary_address',
-                            type: 'text',
+                            type: 'select',
+                            options: this.state.address,
                             placeholder: 'آدرس محل تحت پوشش'
                           },
                           {
-                            id: 8,
                             name: 'booklet_number',
                             type: 'text',
                             placeholder: 'شماره شناسنامه'
+                          },
+                          {
+                            name: 'state',
+                            type: 'text',
+                            placeholder: 'استان'
+                          },
+                          {
+                            name: 'city',
+                            type: 'text',
+                            placeholder: 'شهر'
                           },
                         ]}
                         {...props}
