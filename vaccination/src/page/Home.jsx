@@ -22,8 +22,8 @@ export default class Home extends React.Component {
 
   render() {
     return(
-        <div className="mt-5 col-md-6 mx-auto">
-          <div className="mb-5">
+        <div className="col-md-6 mx-auto">
+          <div>
             <Header/>
           </div>
           <SearchList type={"vaccines_detail"} />

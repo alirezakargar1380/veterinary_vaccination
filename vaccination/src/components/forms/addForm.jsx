@@ -24,15 +24,13 @@ export default class AddForm extends React.Component {
     for (let i = 0; i < inputs.length; i++) {
       if (this.state[inputs[i].name] === undefined)
       {
-        return toast("لطفا فرم را کامل پر کنید", {
-          type: "warning",
-          theme: "dark"
-        })
+        // return toast("لطفا فرم را کامل پر کنید", {
+        //   type: "warning",
+        //   theme: "dark"
+        // })
 
       }
-
       this.state.values[inputs[i].name] = this.state[inputs[i].name]
-
     }
 
     switch (this.props.type) {
@@ -43,6 +41,7 @@ export default class AddForm extends React.Component {
                 type: "info",
                 theme: "dark"
               })
+              window.location.reload()
             })
             .catch(() => {
               toast("هنگام ثبت با مشکل مواجه شد",{
@@ -54,13 +53,21 @@ export default class AddForm extends React.Component {
       case 'livestock':
         await api.add_livestock(this.state.values)
             .then((res) => {
-              console.log(res)
+              toast("کاربر با موفقیت ثبت شد",{
+                type: "info",
+                theme: "dark"
+              })
+              window.location.reload()
             })
         break;
       case 'information_livestock':
         await api.add_livestock(this.state.values)
             .then((res) => {
-              console.log(res)
+              toast("کاربر با موفقیت ثبت شد",{
+                type: "info",
+                theme: "dark"
+              })
+              window.location.reload()
             })
         break;
       case 'vaccines':
@@ -82,67 +89,65 @@ export default class AddForm extends React.Component {
 
   render() {
     return(
-        <div className="text-center mt-5 col-md-4 mx-auto font-20">
-          <h2 className="font-blod">{this.props.title}</h2>
-          <div className="font-medium">
-            <ToastContainer
-                position="bottom-center"
-            />
-          </div>
-          <div className="font-Thin row">
-            {this.props.inputs.map((item, inpIndex) => {
+        <main>
+          <div className="text-center mt-5 col-md-4 mx-auto font-20">
+            <h2 className="font-blod">{this.props.title}</h2>
+            <div className="font-medium">
+              <ToastContainer
+                  position="bottom-center"
+              />
+            </div>
+            <div className="font-Thin row">
+              {this.props.inputs.map((item, inpIndex) => {
 
-              if (item.type === 'select') {
-                return(
-                    <div key={inpIndex} className="col-md-6 pt-3 mt-2">
-                      <select
-                          onChange={(e) => {
-                            this.setState({
-                              [item.name]: e.target.value
-                            })
-                          }}
-                          className="w-100 mx-3 f-20">
-                        <option
-                            defaultValue>{item.placeholder}</option>
-                        {item.options.map((op, index) => (
-                            <option key={index} value={op.eValue} >{op.value}</option>
-                        ))}
-                      </select>
-                    </div>
-                )
-              }
+                if (item.type === 'select') {
+                  return(
+                      <div key={inpIndex} className="col-md-6 pt-3 mt-2">
+                        <select
+                            onChange={(e) => {
+                              this.setState({
+                                [item.name]: e.target.value
+                              })
+                            }}
+                            className="w-100 f-20">
+                          <option
+                              defaultValue>{item.placeholder}</option>
+                          {item.options.map((op, index) => (
+                              <option key={index} value={op.eValue} >{op.value}</option>
+                          ))}
+                        </select>
+                      </div>
+                  )
+                }
 
-              if (item.type === 'text')
-              {
-                return(
-                    <div className="col-md-6 mt-2" key={inpIndex}>
-                      <input
-                          placeholder={item.placeholder}
-                          className="add-form-input-shodow w-100 mt-3 border-0 radius-10 mx-3 px-2 text-right f-20" type="text"
-                          onChange={(e) => {
-                            this.setState({
-                              [item.name]: e.target.value
-                            })
-                          }}
-                      />
-                    </div>
-                )
-              }
-              return null
-            })}
+                if (item.type === 'text')
+                {
+                  return(
+                      <div className="col-md-6 mt-2" key={inpIndex}>
+                        <input
+                            placeholder={item.placeholder}
+                            className="add-form-input-shodow w-100 mt-3 border-0 radius-10 px-2 text-right f-20"
+                            type="text"
+                            onChange={(e) => {
+                              this.setState({
+                                [item.name]: e.target.value
+                              })
+                            }}
+                        />
+                      </div>
+                  )
+                }
+                return null
+              })}
+            </div>
+            <button className="mt-4 font-medium border-0 px-5 f-20 submit-btn cursor" onClick={() => { this.log() }}>ثبت</button>
           </div>
-          <button
-              className="mt-4"
-              onClick={() => {
-                this.log()
-              }}
-          >ثبت</button>
           <div className="mt-5">
             <List
                 type={this.props.type}
             />
           </div>
-        </div>
+        </main>
     )
   }
 }

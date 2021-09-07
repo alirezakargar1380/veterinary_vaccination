@@ -38,6 +38,7 @@ export default class List extends React.Component {
       case 'livestock':
         this.setState({
           title: [
+            'حذف',
             'شناسه',
             'نام',
             'نام خانوادگی',
@@ -74,12 +75,12 @@ export default class List extends React.Component {
         await api.get_life_stock_information().then((res) => {
           for (let i = 0; i < res.data.data.length; i++)
           {
-            res.data.data[i].name = res.data.data[i].livestock.name
-            res.data.data[i].lastname = res.data.data[i].livestock.lastname
-            res.data.data[i].natinal_id = res.data.data[i].livestock.natinal_id
-            res.data.data[i].father = res.data.data[i].livestock.father
-            delete res.data.data[i].livestock
-            delete res.data.data[i].livestock_id
+            // // res.data.data[i].name = res.data.data[i].livestock.name
+            // res.data.data[i].lastname = res.data.data[i].livestock.lastname
+            // res.data.data[i].natinal_id = res.data.data[i].livestock.natinal_id
+            // res.data.data[i].father = res.data.data[i].livestock.father
+            // delete res.data.data[i].livestock
+            // delete res.data.data[i].livestock_id
             // console.log(res.data.data[i])
           }
 
@@ -131,6 +132,8 @@ export default class List extends React.Component {
               })
             })
         break;
+      case 'livestock':
+        break;
       default:
         console.log('def')
     }
@@ -142,6 +145,7 @@ export default class List extends React.Component {
     await this.renderDate()
     if (!this.state.data[0]) return
     var title = Object.keys(this.state.data[0])
+    console.log(title)
     this.setState({
       keys: title
     })
@@ -151,13 +155,11 @@ export default class List extends React.Component {
 
   render() {
     const {data, title, keys} = this.state
-    // const {hello} = this.props
-    // console.log(title)
     if (data.length === 0) return <h1>loading | emty</h1>
     return(
         <div className="w-fit mx-auto">
-          <table border="1" className="font-Thin f-20" dir='rtl'>
-            <thead>
+          <table border="1" className="font-Thin f-20 text-center cw" dir='rtl'>
+            <thead className="bg-b">
             <tr>
               {title.map((item, index) => (
                   <th className="px-2" key={index}>{item}</th>
