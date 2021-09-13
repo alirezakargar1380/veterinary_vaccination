@@ -2,23 +2,23 @@
 module.exports = function (sequelize, DataTypes) {
   // console.log(sequelize)
   const livestock_information = sequelize.define('livestock_information', {
-    livestock_id: {
-      type: DataTypes.INTEGER,
-    },
-    vaccinated_number: {
-      type: DataTypes.INTEGER,
-    },
     emplyee_id: {
+      type: DataTypes.INTEGER,
+    },
+    livestock_id: {
       type: DataTypes.INTEGER,
     },
     vaccine_id: {
       type: DataTypes.INTEGER,
     },
+    type: {
+      type: DataTypes.TEXT,
+    },
     type_livestock: {
       type: DataTypes.TEXT,
     },
-    type: {
-      type: DataTypes.TEXT,
+    vaccinated_number: {
+      type: DataTypes.INTEGER,
     },
     date: {
       type: DataTypes.TEXT,
