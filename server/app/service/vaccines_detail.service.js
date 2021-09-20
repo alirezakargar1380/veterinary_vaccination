@@ -12,6 +12,10 @@ exports.get = async ({
                        city,
                        father,
                        type_work,
+                       booklet_number,
+                       type,type_livestock,
+                       personnel_code,
+                       emp_name, emp_lastname, vac_name
 }) => {
   try {
     return await livestock.findAll({
@@ -22,22 +26,30 @@ exports.get = async ({
         type_work: { [Op.like]: `%${type_work}%` },
         name: { [Op.like]: `%${name}%` },
         lastname: { [Op.like]: `%${lastname}%` },
+        booklet_number: { [Op.like]: `%${booklet_number}%` },
       },
       include: [
         {
           model: livestock_information,
           where: {
+            type: { [Op.like]: `%${type}%` },
+            type_livestock: { [Op.like]: `%${type_livestock}%` },
           },
           required: true,
           include: [
             {
               model: users,
+              where: {
+                personnel_code: { [Op.like]: `%${personnel_code}%` },
+                name: { [Op.like]: `%${emp_name}%` },
+                lastname: { [Op.like]: `%${emp_lastname}%` },
+              }
             },
             {
               model: vaccines,
-              // where: {
-              //   id: 1
-              // }
+              where: {
+                name: { [Op.like]: `%${vac_name}%` },
+              }
             },
           ]
         },

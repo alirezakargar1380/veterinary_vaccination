@@ -32,7 +32,7 @@ module.exports.get_user = async () => {
 }
 
 module.exports.get_vaccines_detail = async () => {
-  return await axios.get(BASE_URL+'/vaccines/detail/get/all', headers)
+  return await axios.get(BASE_URL+'/vaccines/detail/get/all?name=&lastname=&state=&city=&father=&type_work=&booklet_number=&type=&type_livestock=&personnel_code=&emp_name=&emp_lastname=&vac_name=', headers)
 }
 
 module.exports.get_address = async () => {
