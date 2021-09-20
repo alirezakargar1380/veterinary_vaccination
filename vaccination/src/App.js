@@ -4,6 +4,7 @@ import React from "react";
 import Home from "./page/Home";
 import AddForm from "./components/forms/addForm";
 import * as api from './API/public';
+// import VaccinesInformationAddForm from "./components/forms/VaccinesInformationAddForm";
 
 export default class App extends React.Component {
 constructor(props) {
@@ -11,6 +12,7 @@ constructor(props) {
   this.state = {
     address: [],
     life_stock_types: [],
+    vaccines: [],
   }
 }
   employee_op() {
@@ -46,6 +48,24 @@ constructor(props) {
     })
   }
 
+  async vaccines() {
+    const vaccines = await api.get_vaccines().then((res) => {
+      return res.data.data
+    })
+    var options = []
+    for (let i = 0; i < vaccines.length; i++) {
+      options.push({
+        id: vaccines[i].id,
+        eValue: vaccines[i].id,
+        value: vaccines[i].name + " " + vaccines[i].serial,
+      })
+    }
+
+    this.setState({
+      vaccines: options
+    })
+  }
+
   async lifestock_types() {
     const types = await api.get_life_stock_types().then((res) => {
       return res.data.data
@@ -65,9 +85,15 @@ constructor(props) {
   }
 
   async componentDidMount() {
-    // console.log(window.location.href)
+    console.log()
+    switch (window.location.pathname) {
+      case '/information_livestock':
+        await this.lifestock_types();
+        await this.vaccines();
+        break;
+      default:
+    }
     await this.address_op();
-    await this.lifestock_types();
   }
 
   render() {
@@ -173,7 +199,8 @@ constructor(props) {
                             options: [{
                               eValue: 'عشایر',
                               value: 'عشایر',
-                            }, {
+                            },
+                              {
                               eValue: 'شهری',
                               value: 'شهری',
                             }],
@@ -209,21 +236,71 @@ constructor(props) {
                 path="/information_livestock"
                 render={(props) => (
                     <AddForm
-                        title={"اطلاعات دامداران"}
+                        title={"اطلاعات واکسیناسیون"}
                         type={"information_livestock"}
                         inputs={[
                           {
-                            id: 1,
-                            name: 'livestock_id',
-                            type: 'text',
-                            placeholder: 'نام دامدار'
+                            name: 'employee_id',
+                            list: 'employees',
+                            type: 'datalist',
+                            options: 'get_employee',
+                            placeholder: 'شناسه کارمند'
                           },
                           {
-                            id: 2,
+                            name: 'livestock_id',
+                            list: 'livestocks',
+                            type: 'datalist',
+                            options: 'get_livestock',
+                            placeholder: 'شناسه دامدار'
+                          },
+                          {
+                            name: 'type_livestock',
                             type: 'select',
                             options: this.state.life_stock_types,
                             placeholder: 'نوع دام'
-                          }
+                          },
+                          {
+                            name: 'number_livestock',
+                            type: 'text',
+                            placeholder: 'تعداد دام'
+                          },
+                          {
+                            name: 'vaccine_id',
+                            type: 'select',
+                            options: this.state.vaccines,
+                            placeholder: 'شناسه واکسن'
+                          },
+                          {
+                            name: 'type',
+                            type: 'select',
+                            options: [
+                              {
+                                eValue: 'فردی',
+                                value: 'فردی',
+                              },
+                              {
+                                eValue: 'اکیپی',
+                                value: 'اکیپی',
+                              }
+                            ],
+                            placeholder: 'نوع عملیات'
+                          },
+                          {
+                            name: 'date',
+                            type: 'text',
+                            placeholder: 'روز/ماه/سال'
+                          },
+                          {
+                            name: 'vaccinated_number',
+                            type: 'text',
+                            placeholder: 'تعداد واکسینه شده ها'
+                          },
+                          {
+                            name: 'number_eligible_livestock',
+                            type: 'text',
+                            placeholder: 'تعداد دام های واجد شرایط'
+                          },
+
                         ]}
                         {...props}
                     />

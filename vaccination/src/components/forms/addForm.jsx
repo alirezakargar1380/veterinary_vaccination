@@ -12,11 +12,14 @@ export default class AddForm extends React.Component {
         {id: 1, name: 'name'},
         {id: 2, name: 'serial'}
       ],
-      values: {}
+      values: {},
+      datalist: [],
+      keys: []
     }
   }
 
   componentDidMount() {
+
   }
 
   async log() {
@@ -24,10 +27,10 @@ export default class AddForm extends React.Component {
     for (let i = 0; i < inputs.length; i++) {
       if (this.state[inputs[i].name] === undefined)
       {
-        // return toast("لطفا فرم را کامل پر کنید", {
-        //   type: "warning",
-        //   theme: "dark"
-        // })
+        return toast("لطفا فرم را کامل پر کنید", {
+          type: "warning",
+          theme: "dark"
+        })
 
       }
       this.state.values[inputs[i].name] = this.state[inputs[i].name]
@@ -61,13 +64,13 @@ export default class AddForm extends React.Component {
             })
         break;
       case 'information_livestock':
-        await api.add_livestock(this.state.values)
+        await api.add_lifestock_information(this.state.values)
             .then((res) => {
               toast("کاربر با موفقیت ثبت شد",{
                 type: "info",
                 theme: "dark"
               })
-              window.location.reload()
+              // window.location.reload()
             })
         break;
       case 'vaccines':
@@ -87,10 +90,34 @@ export default class AddForm extends React.Component {
     }
   }
 
+  async get_employees(option) {
+    switch (option) {
+      case 'get_employee':
+        await api.get_user().then((res) => {
+          this.setState({
+            datalist: res.data.data,
+            keys: ['name','lastname', 'personnel_code']
+          })
+        })
+        break;
+      case 'get_livestock':
+        await api.get_livestock().then((res) => {
+          this.setState({
+            datalist: res.data.data,
+            keys: ['name','lastname']
+          })
+        })
+        break;
+      default:
+
+    }
+
+  }
+
   render() {
     return(
         <main>
-          <div className="text-center mt-5 col-md-4 mx-auto font-20">
+          <div className="text-center mt-5 col-md-5 mx-auto font-20">
             <h2 className="font-blod">{this.props.title}</h2>
             <div className="font-medium">
               <ToastContainer
@@ -116,6 +143,31 @@ export default class AddForm extends React.Component {
                               <option key={index} value={op.eValue} >{op.value}</option>
                           ))}
                         </select>
+                      </div>
+                  )
+                }
+
+                if (item.type === 'datalist')
+                {
+                  return(
+                      <div className="col-md-6 mt-2" key={inpIndex}>
+                        <input list={item.list} placeholder={item.placeholder}
+                               className="mt-3"
+                               onClick={() => { this.get_employees(item.options) }}
+                               onChange={(e) => {
+                                 this.setState({
+                                   [item.name]: e.target.value
+                                 })
+                               }}
+                        />
+                        <datalist id={item.list}>
+                          {this.state.datalist.map((item, index) => (
+                              // console.log(item)
+                              <option key={index} value={item.id}>{this.state.keys.map((res) => (
+                                  item[res] + " "
+                              ))}</option>
+                          ))}
+                        </datalist>
                       </div>
                   )
                 }

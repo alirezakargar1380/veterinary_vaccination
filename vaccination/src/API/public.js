@@ -15,6 +15,10 @@ module.exports.add_livestock = async (body) => {
   return await axios.post(BASE_URL+'/livestock/add', body, headers)
 }
 
+module.exports.add_lifestock_information = async (body) => {
+  return await axios.post(BASE_URL+'/livestock_information/add', body, headers)
+}
+
 module.exports.add_vaccines = async (body) => {
   return await axios.post(BASE_URL+'/vaccines/add', body, headers)
 }
