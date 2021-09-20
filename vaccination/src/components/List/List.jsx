@@ -60,8 +60,9 @@ export default class List extends React.Component {
       case 'information_livestock':
         this.setState({
           title: [
+            'حذف',
             'شناسه',
-            'نام',
+            'شناسه کارمند',
             'نام خانوادگی',
             'کد ملی',
             'نام پدر',
@@ -73,17 +74,16 @@ export default class List extends React.Component {
           ]
         })
         await api.get_life_stock_information().then((res) => {
-          for (let i = 0; i < res.data.data.length; i++)
-          {
-            // // res.data.data[i].name = res.data.data[i].livestock.name
-            // res.data.data[i].lastname = res.data.data[i].livestock.lastname
-            // res.data.data[i].natinal_id = res.data.data[i].livestock.natinal_id
-            // res.data.data[i].father = res.data.data[i].livestock.father
-            // delete res.data.data[i].livestock
-            // delete res.data.data[i].livestock_id
-            // console.log(res.data.data[i])
-          }
-
+          // for (let i = 0; i < res.data.data.length; i++)
+          // {
+          //   res.data.data[i].name = res.data.data[i].livestock.name
+          //   res.data.data[i].lastname = res.data.data[i].livestock.lastname
+          //   res.data.data[i].natinal_id = res.data.data[i].livestock.natinal_id
+          //   res.data.data[i].father = res.data.data[i].livestock.father
+          //   delete res.data.data[i].livestock
+          //   delete res.data.data[i].livestock_id
+          //   console.log(res.data.data[i])
+          // }
           this.setState({
             data: res.data.data
           })
