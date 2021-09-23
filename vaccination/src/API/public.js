@@ -1,5 +1,6 @@
-const {BASE_URL} = require('./../env/env');
-const axios = require("axios");
+import axios from "axios"
+
+const BASE_URL = "https://datamove.ir/veterinary/api"
 
 const headers = {
   headers: {
@@ -7,59 +8,61 @@ const headers = {
   }
 }
 
-module.exports.add_user = async (body) => {
+export const add_user = async (body) => {
   return await axios.post(BASE_URL+'/add_user', body, headers)
 }
 
-module.exports.add_livestock = async (body) => {
+export const add_livestock = async (body) => {
   return await axios.post(BASE_URL+'/livestock/add', body, headers)
 }
 
-module.exports.add_lifestock_information = async (body) => {
+export const add_lifestock_information = async (body) => {
   return await axios.post(BASE_URL+'/livestock_information/add', body, headers)
 }
 
-module.exports.add_vaccines = async (body) => {
+export const add_vaccines = async (body) => {
   return await axios.post(BASE_URL+'/vaccines/add', body, headers)
 }
 
-module.exports.add_address = async (body) => {
+export const add_address = async (body) => {
   return await axios.post(BASE_URL+'/address/add', body, headers)
 }
 
-module.exports.get_user = async () => {
+export const get_user = async () => {
   return await axios.get(BASE_URL+'/get_users', headers)
 }
 
-module.exports.get_vaccines_detail = async () => {
-  return await axios.get(BASE_URL+'/vaccines/detail/get/all?name=&lastname=&state=&city=&father=&type_work=&booklet_number=&type=&type_livestock=&personnel_code=&emp_name=&emp_lastname=&vac_name=', headers)
+export const get_vaccines_detail = async (items) => {
+  let url = BASE_URL + `/vaccines/detail/get/all?name=${items.name}&lastname=${items.lastname}` +
+      `&state=${items.state}&city=${items.city}&father=${items.father}&type_work=${items.type_work}` +
+      `&booklet_number=${items.booklet_number}&type=${items.type}&type_livestock=${items.type_livestock}` +
+      `&personnel_code=${items.personnel_code}&emp_name=${items.emp_name}&emp_lastname=${items.emp_lastname}` +
+      `&vac_name=${items.vac_name}&date=${items.date}`
+  console.log(url)
+  return await axios.get(url, headers)
 }
 
-module.exports.get_address = async () => {
+export const get_address = async () => {
   return await axios.get(BASE_URL+'/address/get', headers)
 }
 
-module.exports.get_vaccines = async () => {
+export const get_vaccines = async () => {
   return await axios.get(BASE_URL+'/vaccines/get', headers)
 }
 
-module.exports.get_livestock = async () => {
+export const get_livestock = async () => {
   return await axios.get(BASE_URL+'/livestock/get', headers)
 }
 
-module.exports.get_life_stock_types = async () => {
+export const get_life_stock_types = async () => {
   return await axios.get(BASE_URL+'/livestock_types/get', headers)
 }
 
-module.exports.get_life_stock_information = async () => {
+export const get_life_stock_information = async () => {
   return await axios.get(BASE_URL+'/livestock_information/get', headers)
 }
 
-module.exports.get_address = async () => {
-  return await axios.get(BASE_URL+'/address/get', headers)
-}
-
-module.exports.delete_user = async (id) => {
+export const delete_user = async (id) => {
   return await axios.delete(BASE_URL+`/delete_user?id=${id}`, headers)
 }
 
