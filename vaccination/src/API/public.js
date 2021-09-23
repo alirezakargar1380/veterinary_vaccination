@@ -38,7 +38,6 @@ export const get_vaccines_detail = async (items) => {
       `&booklet_number=${items.booklet_number}&type=${items.type}&type_livestock=${items.type_livestock}` +
       `&personnel_code=${items.personnel_code}&emp_name=${items.emp_name}&emp_lastname=${items.emp_lastname}` +
       `&vac_name=${items.vac_name}&date=${items.date}`
-  console.log(url)
   return await axios.get(url, headers)
 }
 
@@ -62,7 +61,17 @@ export const get_life_stock_information = async () => {
   return await axios.get(BASE_URL+'/livestock_information/get', headers)
 }
 
+
+// =================================================== DELETE
 export const delete_user = async (id) => {
   return await axios.delete(BASE_URL+`/delete_user?id=${id}`, headers)
+}
+
+export const delete_livestock_information = async (id) => {
+  return await axios.delete(BASE_URL+`/livestock_information/delete?id=${id}`, headers)
+}
+
+export const delete_address = async (id) => {
+  return await axios.delete(BASE_URL+`/address/delete/by_id?id=${id}`, headers)
 }
 

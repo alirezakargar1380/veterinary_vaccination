@@ -134,6 +134,33 @@ export default class List extends React.Component {
         break;
       case 'livestock':
         break;
+      case 'information_livestock':
+        await api.delete_livestock_information(id)
+            .then(() => {
+              toast("حذف شد",{
+                type: "info",
+                theme: "dark"
+              })
+            })
+        break;
+      case 'lifestock_address':
+        await api.delete_address(id)
+            .then(() => {
+              toast("حذف شد",{
+                type: "info",
+                theme: "dark"
+              })
+            })
+        break;
+      case 'vaccines':
+        // await api.delete_address(id)
+        //     .then(() => {
+        //       toast("حذف شد",{
+        //         type: "info",
+        //         theme: "dark"
+        //       })
+        //     })
+        break;
       default:
         console.log('def')
     }
