@@ -11,49 +11,30 @@ export default class SearchList extends React.Component {
     this.state = {
       data: [],
       title: [],
-      keys: []
+      keys: [],
+      searchValues: {
+        name: "",
+        lastname: "",
+        state: "",
+        city: "",
+        father: "",
+        type_work: "",
+        booklet_number: "",
+        type: "",
+        type_livestock: "",
+        personnel_code: "",
+        emp_name: "",
+        emp_lastname: "",
+        vac_name: "",
+        date: ""
+      }
     }
   }
 
   async componentDidMount() {
     switch (this.props.type) {
       case 'vaccines_detail':
-        this.setState({
-          title: [
-            // 'حذف',
-            'شناسه',
-            'نام دامدار',
-            'نام خانوادگی دامدار',
-            'شماره ملی',
-            'نام پدر',
-            'نوع دامداری',
-            'استان',
-            'شهرستان',
-            'شماره شناسنامه',
-          ]
-        })
-        await api.get_vaccines_detail()
-            .then((res) => {
-              for (let i = 0; i < res.data.data.length; i++) {
-                // res.data.data[i].name = res.data.data[i].livestock.name
-                // res.data.data[i].lastname = res.data.data[i].livestock.lastname
-                // res.data.data[i].natinal_id = res.data.data[i].livestock.natinal_id
-                // res.data.data[i].father = res.data.data[i].livestock.father
-                // res.data.data[i].state = res.data.data[i].livestock.state
-                // res.data.data[i].city = res.data.data[i].livestock.city
-                // res.data.data[i].employee_name = res.data.data[i].user.name
-                // res.data.data[i].employee_lastname = res.data.data[i].user.lastname
-                // res.data.data[i].employee_personnel_code = res.data.data[i].user.personnel_code
-                // delete res.data.data[i].livestock_informations
-                delete res.data.data[i].veterinary_address
-                // delete res.data.data[i].emplyee_id
-                // delete res.data.data[i].user.id
-                // delete res.data.data[i].user
-              }
-              this.setState({
-                data: res.data.data
-              })
-            })
+        await this.get_vaccines_detail()
         break;
       default:
         console.log('def')
@@ -79,24 +60,207 @@ export default class SearchList extends React.Component {
     })
   }
 
+  async get_vaccines_detail() {
+    this.setState({
+      title: [
+        // 'حذف',
+        'شناسه',
+        'نام دامدار',
+        'نام خانوادگی دامدار',
+        'شماره ملی',
+        'نام پدر',
+        'نوع دامداری',
+        'استان',
+        'شهرستان',
+        'شماره شناسنامه',
+      ]
+    })
+    await api.get_vaccines_detail(this.state.searchValues)
+        .then((res) => {
+          for (let i = 0; i < res.data.data.length; i++) {
+            // res.data.data[i].name = res.data.data[i].livestock.name
+            // res.data.data[i].lastname = res.data.data[i].livestock.lastname
+            // res.data.data[i].natinal_id = res.data.data[i].livestock.natinal_id
+            // res.data.data[i].father = res.data.data[i].livestock.father
+            // res.data.data[i].state = res.data.data[i].livestock.state
+            // res.data.data[i].city = res.data.data[i].livestock.city
+            // res.data.data[i].employee_name = res.data.data[i].user.name
+            // res.data.data[i].employee_lastname = res.data.data[i].user.lastname
+            // res.data.data[i].employee_personnel_code = res.data.data[i].user.personnel_code
+            // delete res.data.data[i].livestock_informations
+            delete res.data.data[i].veterinary_address
+            // delete res.data.data[i].emplyee_id
+            // delete res.data.data[i].user.id
+            // delete res.data.data[i].user
+          }
+          this.setState({
+            data: res.data.data
+          })
+        })
+  }
+
   render() {
     const {data, title, keys} = this.state
-    if (data.length === 0) return <h1>loading | emty</h1>
+    // if (data.length === 0) return <h1>loading | emty</h1>
     return (
         <div>
           <div className="mb-5">
 
-            {/*<div className="mb-5 article-box mx-auto row p-2">*/}
-            {/*  <div className="col-md-6">*/}
-            {/*    <section className="row mx-auto">*/}
-            {/*      <div className="col-md-6 text-left font-blod px-0">تعداد کل واکسن شده:</div>*/}
-            {/*      <div className="col-md-6 text-right font-medium">کلیک کنید</div>*/}
-            {/*    </section>*/}
-            {/*  </div>*/}
-            {/*</div>*/}
+            <section className="row my-4 font-medium">
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نام دامدار</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.name = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نام خانوادگی دامدار</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.lastname = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نام استان</label>
+                <input className="w-100"
+                       onChange={(e) => {
+                         this.setState((prevState) => {
+                           prevState.searchValues.state = e.target.value
+                         })
+                       }}
+                />
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نام شهر</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.city = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نام پدر</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.father = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نوع کار</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.type_work = e.target.value
+                      })
+                    }}
+                    placeholder="عشایری / آزاد"
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">شماره دفترچه</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.booklet_number = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نوع عملیات</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.type = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نوع دام</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.type_livestock = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">کد پرسنلی</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.personnel_code = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نام کارمند</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.emp_name = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نام خانوادگی کارمند</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.emp_lastname = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">نوع واکسن</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.vac_name = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label className="w-100 text-right cw">تاریخ عملیات</label>
+                <input
+                    onChange={(e) => {
+                      this.setState((prevState) => {
+                        prevState.searchValues.date = e.target.value
+                      })
+                    }}
+                    className="w-100"/>
+              </div>
+            </section>
+            <div className="row">
+              <div className="col-md-3">
+                <button
+                    onClick={ async () => {
+                      await this.get_vaccines_detail()
+                    }}
+                    className="w-100 border-0 py-2 font-medium">فیلتر</button>
+              </div>
+            </div>
 
             {data.map((dateItem, dataIndex) => (
-                <article key={dataIndex + 9000} className="radius-10 article-box-bg f-20 p-2 row mb-5">{
+                <article key={dataIndex + 9000} className="radius-10 article-box-bg f-20 p-2 row my-5">{
 
                   keys.map((keysItem, index) => {
                     if (keys[index] === "info") {

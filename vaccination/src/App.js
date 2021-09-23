@@ -348,13 +348,8 @@ constructor(props) {
                     />
                 )}
             />
-            <Route
-                path="/"
-                render={(props) => (
-                    <Home {...props} />
-                )}
-            />
-            <Redirect to="/" />
+            <Route path="/" render={(props) => ( <Home {...props} /> )} />
+            <Redirect exact to="/" />
           </Switch>
         </BrowserRouter>
     )
