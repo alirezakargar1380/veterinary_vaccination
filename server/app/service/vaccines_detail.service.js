@@ -15,7 +15,7 @@ exports.get = async ({
                        booklet_number,
                        type,type_livestock,
                        personnel_code,
-                       emp_name, emp_lastname, vac_name
+                       emp_name, emp_lastname, vac_name, date
 }) => {
   try {
     return await livestock.findAll({
@@ -34,6 +34,7 @@ exports.get = async ({
           where: {
             type: { [Op.like]: `%${type}%` },
             type_livestock: { [Op.like]: `%${type_livestock}%` },
+            date: { [Op.like]: `%${date}%` },
           },
           required: true,
           include: [
