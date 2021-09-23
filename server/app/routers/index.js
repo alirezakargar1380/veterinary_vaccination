@@ -1,6 +1,6 @@
 module.exports = (app) => {
   app.use(
-      "/api",
+      "/veterinary/api",
       require("./users.routers"),
       require("./test.router"),
       require("./livestock.routers"),
