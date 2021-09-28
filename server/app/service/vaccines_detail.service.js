@@ -1,5 +1,5 @@
 const {
-  livestock_information, livestock, users, vaccines
+  livestock_information, livestock, users, vaccines, ecips
 } = require("./../models")
 const log = require('../utils/log.utility')
 const Exception = require("../utils/error.utility")
@@ -45,6 +45,9 @@ exports.get = async ({
                 name: { [Op.like]: `%${emp_name}%` },
                 lastname: { [Op.like]: `%${emp_lastname}%` },
               }
+            },
+            {
+              model: ecips
             },
             {
               model: vaccines,

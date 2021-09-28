@@ -9,5 +9,6 @@ module.exports = (app) => {
       require("./vaccines.routers"),
       require("./address.router"),
       require("./vaccines_detail.router"),
+      require("./ecips.routers"),
   )
 }

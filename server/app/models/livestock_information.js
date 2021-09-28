@@ -2,6 +2,9 @@
 module.exports = function (sequelize, DataTypes) {
   // console.log(sequelize)
   const livestock_information = sequelize.define('livestock_information', {
+    ecip_id: {
+      type: DataTypes.TEXT,
+    },
     employee_id: {
       type: DataTypes.INTEGER,
     },
@@ -55,6 +58,11 @@ module.exports = function (sequelize, DataTypes) {
     livestock_information.hasOne(models.vaccines, {
       foreignKey: 'id',
       sourceKey: 'vaccine_id'
+    });
+
+    livestock_information.hasMany(models.ecips, {
+      foreignKey: 'ecip_id',
+      sourceKey: 'ecip_id'
     });
 
   }
