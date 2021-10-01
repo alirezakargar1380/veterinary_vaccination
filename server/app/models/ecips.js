@@ -14,7 +14,10 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   ecips.associate = function(models) {
-
+    ecips.hasOne(models.users, {
+      foreignKey: 'id',
+      sourceKey: 'employee_id'
+    });
   }
 
   return ecips;

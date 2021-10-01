@@ -1,6 +1,7 @@
 import axios from "axios"
 
-const BASE_URL = "https://datamove.ir/veterinary/api"
+// const BASE_URL = "https://datamove.ir/veterinary/api"
+const BASE_URL = "http://localhost:4999/veterinary/api"
 
 const headers = {
   headers: {
@@ -69,6 +70,10 @@ export const delete_user = async (id) => {
 
 export const delete_livestock_information = async (id) => {
   return await axios.delete(BASE_URL+`/livestock_information/delete?id=${id}`, headers)
+}
+
+export const delete_livestock = async (id) => {
+  return await axios.delete(BASE_URL+`/livestock/delete?id=${id}`, headers)
 }
 
 export const delete_address = async (id) => {

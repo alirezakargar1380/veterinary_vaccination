@@ -25,14 +25,14 @@ export default class AddForm extends React.Component {
   async log() {
     const {inputs} = this.props
     for (let i = 0; i < inputs.length; i++) {
-      if (this.state[inputs[i].name] === undefined)
-      {
-        return toast("لطفا فرم را کامل پر کنید", {
-          type: "warning",
-          theme: "dark"
-        })
-
-      }
+      // if (this.state[inputs[i].name] === undefined)
+      // {
+      //   return toast("لطفا فرم را کامل پر کنید", {
+      //     type: "warning",
+      //     theme: "dark"
+      //   })
+      //
+      // }
       this.state.values[inputs[i].name] = this.state[inputs[i].name]
     }
 

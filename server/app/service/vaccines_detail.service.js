@@ -40,6 +40,7 @@ exports.get = async ({
           include: [
             {
               model: users,
+              required: false,
               where: {
                 personnel_code: { [Op.like]: `%${personnel_code}%` },
                 name: { [Op.like]: `%${emp_name}%` },
@@ -47,7 +48,12 @@ exports.get = async ({
               }
             },
             {
-              model: ecips
+              model: ecips,
+              include: [
+                {
+                  model: users,
+                }
+              ]
             },
             {
               model: vaccines,

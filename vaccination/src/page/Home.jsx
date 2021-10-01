@@ -22,7 +22,7 @@ export default class Home extends React.Component {
 
   render() {
     return(
-        <div className="col-md-6 mx-auto">
+        <div className="col-md-6 mx-auto px-3">
           <div>
             <Header/>
           </div>

@@ -48,6 +48,7 @@ export default class List extends React.Component {
             'آدرس محل تحت پوشش',
             'استان',
             'شهر',
+            'روستا',
             'شماره شناسنامه'
           ]
         })
@@ -70,6 +71,7 @@ export default class List extends React.Component {
             'آدرس محل تحت پوشش',
             'استان',
             'شهر',
+            'روستا',
             'شماره شناسنامه'
           ]
         })
@@ -133,6 +135,13 @@ export default class List extends React.Component {
             })
         break;
       case 'livestock':
+        await api.delete_livestock(id)
+            .then(() => {
+              toast("کاربر با حذف شد",{
+                type: "info",
+                theme: "dark"
+              })
+            })
         break;
       case 'information_livestock':
         await api.delete_livestock_information(id)
@@ -184,7 +193,7 @@ export default class List extends React.Component {
     const {data, title, keys} = this.state
     if (data.length === 0) return <h1>loading | emty</h1>
     return(
-        <div className="w-fit mx-auto">
+        <div className="w-fit mx-auto mb-5">
           <table border="1" className="font-Thin f-20 text-center cw" dir='rtl'>
             <thead className="bg-b">
             <tr>

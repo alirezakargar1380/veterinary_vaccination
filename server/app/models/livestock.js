@@ -4,27 +4,21 @@ module.exports = function (sequelize, DataTypes) {
   const livestock = sequelize.define('livestock', {
     name: {
       type: DataTypes.TEXT,
-      allowNull: false
     },
     lastname: {
       type: DataTypes.TEXT,
-      allowNull: false
     },
     natinal_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
     },
     father: {
       type: DataTypes.TEXT,
-      allowNull: false
     },
     type_work: {
       type: DataTypes.TEXT,
-      allowNull: false
     },
     veterinary_address: {
       type: DataTypes.TEXT,
-      allowNull: false
     },
     state: {
       type: DataTypes.TEXT,
@@ -32,9 +26,11 @@ module.exports = function (sequelize, DataTypes) {
     city: {
       type: DataTypes.TEXT,
     },
+    village: {
+      type: DataTypes.TEXT,
+    },
     booklet_number: {
       type: DataTypes.INTEGER,
-      allowNull: false
     },
   }, {
     tableName: "livestock",

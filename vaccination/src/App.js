@@ -197,12 +197,12 @@ constructor(props) {
                             name: 'type_work',
                             type: 'select',
                             options: [{
-                              eValue: 'عشایر',
-                              value: 'عشایر',
+                              eValue: 'عشایری',
+                              value: 'عشایری',
                             },
                               {
-                              eValue: 'شهری',
-                              value: 'شهری',
+                              eValue: 'ثابت',
+                              value: 'ثابت',
                             }],
                             placeholder: 'نوع فعالیت دام'
                           },
@@ -226,6 +226,11 @@ constructor(props) {
                             name: 'city',
                             type: 'text',
                             placeholder: 'شهر'
+                          },
+                          {
+                            name: 'village',
+                            type: 'text',
+                            placeholder: 'روستا'
                           },
                         ]}
                         {...props}

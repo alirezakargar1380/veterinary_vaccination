@@ -72,6 +72,7 @@ export default class SearchList extends React.Component {
         'نوع دامداری',
         'استان',
         'شهرستان',
+        'روستا',
         'شماره شناسنامه',
       ]
     })
@@ -108,7 +109,7 @@ export default class SearchList extends React.Component {
 
             <section className="row my-4 font-medium">
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نام دامدار</label>
+                <label className="w-100 text-right">نام دامدار</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
@@ -118,7 +119,7 @@ export default class SearchList extends React.Component {
                     className="w-100"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نام خانوادگی دامدار</label>
+                <label className="w-100 text-right">نام خانوادگی دامدار</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
@@ -128,7 +129,7 @@ export default class SearchList extends React.Component {
                     className="w-100"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نام استان</label>
+                <label className="w-100 text-right">نام استان</label>
                 <input className="w-100"
                        onChange={(e) => {
                          this.setState((prevState) => {
@@ -138,7 +139,7 @@ export default class SearchList extends React.Component {
                 />
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نام شهر</label>
+                <label className="w-100 text-right">نام شهر</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
@@ -148,7 +149,7 @@ export default class SearchList extends React.Component {
                     className="w-100"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نام پدر</label>
+                <label className="w-100 text-right">نام پدر</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
@@ -158,68 +159,70 @@ export default class SearchList extends React.Component {
                     className="w-100"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نوع کار</label>
-                <input
+                <label className="w-100 text-right">نوع فعالیت دام دار</label>
+                <select className="w-100"
                     onChange={(e) => {
                       this.setState((prevState) => {
                         prevState.searchValues.type_work = e.target.value
                       })
-                    }}
-                    placeholder="عشایری / آزاد"
-                    className="w-100"/>
+                    }}>
+                  <option>انتخاب کنید...</option>
+                  <option value="عشایری">عشایری</option>
+                  <option value="ثابت">ثابت</option>
+                </select>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">شماره دفترچه</label>
+                <label className="w-100 text-right">شماره دفترچه</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
                         prevState.searchValues.booklet_number = e.target.value
                       })
                     }}
-                    className="w-100"/>
+                    className="w-100 pr-1 py-1"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نوع عملیات</label>
+                <label className="w-100 text-right">نوع عملیات</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
                         prevState.searchValues.type = e.target.value
                       })
                     }}
-                    className="w-100"/>
+                    className="w-100 pr-1 py-1"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نوع دام</label>
+                <label className="w-100 text-right">نوع دام</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
                         prevState.searchValues.type_livestock = e.target.value
                       })
                     }}
-                    className="w-100"/>
+                    className="w-100 pr-1 py-1"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">کد پرسنلی</label>
+                <label className="w-100 text-right">کد پرسنلی</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
                         prevState.searchValues.personnel_code = e.target.value
                       })
                     }}
-                    className="w-100"/>
+                    className="w-100 pr-1 py-1"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نام کارمند</label>
+                <label className="w-100 text-right">نام کارمند</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
                         prevState.searchValues.emp_name = e.target.value
                       })
                     }}
-                    className="w-100"/>
+                    className="w-100 pr-1 py-1"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نام خانوادگی کارمند</label>
+                <label className="w-100 text-right">نام خانوادگی کارمند</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
@@ -229,7 +232,7 @@ export default class SearchList extends React.Component {
                     className="w-100"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">نوع واکسن</label>
+                <label className="w-100 text-right">نوع واکسن</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
@@ -239,7 +242,7 @@ export default class SearchList extends React.Component {
                     className="w-100"/>
               </div>
               <div className="col-md-3 mb-3">
-                <label className="w-100 text-right cw">تاریخ عملیات</label>
+                <label className="w-100 text-right">تاریخ عملیات</label>
                 <input
                     onChange={(e) => {
                       this.setState((prevState) => {
@@ -259,41 +262,84 @@ export default class SearchList extends React.Component {
               </div>
             </div>
 
-            {data.map((dateItem, dataIndex) => (
-                <article key={dataIndex + 9000} className="radius-10 article-box-bg f-20 p-2 row my-5">{
+            {data.map((dataItem, dataIndex) => (
+                <article key={dataIndex} className="radius-10 article-box-bg f-20 p-2 row my-5">{
+                  (
+                      <section className="w-100 font-Thin">
 
-                  keys.map((keysItem, index) => {
-                    if (keys[index] === "info") {
-                      return (
-
-                          <VaccinesInfoTable key={index} info={dateItem.livestock_informations}/>
-
-                      )
-                    }
-                    // if (title[index] === "حذف") {
-                    //   return (
-                    //       <div className="col-md-6" key={index}>
-                    //         <section className="row mx-auto form-group">
-                    //           <div className="col-md-6 text-left font-blod px-0">{title[index]}:</div>
-                    //           <div className="col-md-6 text-right font-medium" onClick={() => {
-                    //             alert(dateItem.id)
-                    //           }}>کلیک
-                    //           </div>
-                    //         </section>
-                    //       </div>
-                    //   )
-                    // }
-                    else {
-                      return (
-                          <div className="col-md-6" key={index + 2000}>
-                            <section className="row mx-auto form-group">
-                              <div className="col-md-6 text-left font-blod px-0">{title[index]}:</div>
-                              <div className="col-md-6 text-right font-medium">{dateItem[keysItem]}</div>
-                            </section>
+                        <div className="row mb-4 w-100">
+                          <div className="col-sm-4">
+                            <label className="text-right w-100 mb-0 font-blod">شماره دفترچه</label>
+                            <div className="text-right w-100">{dataItem.booklet_number}</div>
                           </div>
-                      )
-                    }
-                  })
+                          <div className="col-sm-4">
+                            <label className="text-right w-100 font-blod">نام</label>
+                            <div className="text-right w-100">{dataItem.name}</div>
+                          </div>
+                          <div className="col-sm-4">
+                            <label className="text-right w-100 font-blod">نام خانوادگی</label>
+                            <div className="text-right w-100">{dataItem.lastname}</div>
+                          </div>
+                        </div>
+
+                        <div className="row mb-4 w-100">
+                          <div className="col-sm-4">
+                            <label className="text-right w-100 font-blod">کد ملی</label>
+                            <div className="text-right w-100">{dataItem.natinal_id}</div>
+                          </div>
+                          <div className="col-sm-4">
+                            <label className="text-right w-100 font-blod">نام پدر</label>
+                            <div className="text-right w-100">{dataItem.father}</div>
+                          </div>
+                          <div className="col-sm-4">
+                            <label className="text-right w-100 font-blod">نوع فعالیت دام دار</label>
+                            <div className="text-right w-100">{dataItem.type_work}</div>
+                          </div>
+                        </div>
+
+                        <div className="row mb-4 w-100">
+                          <div className="col-sm-4">
+                            <label className="text-right w-100 mb-0 font-blod">استان</label>
+                            <div className="text-right w-100">{dataItem.state}</div>
+                          </div>
+                          <div className="col-sm-4">
+                            <label className="text-right w-100 mb-0 font-blod">شهر</label>
+                            <div className="text-right w-100">{dataItem.city}</div>
+                          </div>
+                          <div className="col-sm-4">
+                            <label className="text-right w-100 mb-0 font-blod">روستا</label>
+                            <div className="text-right w-100">{dataItem.village}</div>
+                          </div>
+                        </div>
+
+                        <div className="d-flex mb-4 w-100">
+                        </div>
+
+                        <div className="w-100 over mb-3 overflow-auto">
+                          <VaccinesInfoTable info={dataItem.livestock_informations}/>
+                        </div>
+                      </section>
+                  )
+                  // keys.map((keysItem, index) => {
+                  //   if (keys[index] === "info") {
+                  //     return (
+                  //
+                  //         h1
+                  //
+                  //     )
+                  //   }
+                  //   else {
+                  //     console.log(dateItem)
+                  //     return (
+                  //         <div className="col-md-6 mb-2" key={index + 2000}>
+                  //           <section className="d-flex">
+                  //             <div className="col-md-6 text-left font-blod px-0"></div>
+                  //             <div className="col-md-6 text-right font-medium">{dateItem.id}</div>
+                  //           </section>
+                  //         </div>
+                  //     )
+                  //   }
+                  // })
 
                 }</article>
             ))}
